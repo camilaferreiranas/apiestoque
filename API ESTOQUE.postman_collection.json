@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "d9ae9297-00f1-4485-bac2-72d0f35f26cf",
+		"name": "API ESTOQUE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CATEGORIA",
+			"item": [
+				{
+					"name": "POST - CRIAR CATEGORIA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descricao\": \"Eletrodomésticos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/categoria",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - LISTAR CATEGORIAS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categoria",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUTO",
+			"item": []
+		},
+		{
+			"name": "PEDIDO",
+			"item": []
+		}
+	]
+}
