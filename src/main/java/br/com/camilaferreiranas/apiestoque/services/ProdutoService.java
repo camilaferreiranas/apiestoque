@@ -4,6 +4,7 @@ import br.com.camilaferreiranas.apiestoque.dto.ProdutoDto;
 import br.com.camilaferreiranas.apiestoque.model.Categoria;
 import br.com.camilaferreiranas.apiestoque.model.Produto;
 import br.com.camilaferreiranas.apiestoque.repositories.ProdutoRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,11 @@ public class ProdutoService {
 
     public Optional<List<Produto>> findProdutoByCategoria(Long idCategoria) {
         return produtoRepository.findProdutoByCategoria(idCategoria);
+    }
+
+    @Transactional
+    //implementar executeUpdate()
+    public Produto aplicarPromocaoProduto(double desconto) {
+        return null;
     }
 }
