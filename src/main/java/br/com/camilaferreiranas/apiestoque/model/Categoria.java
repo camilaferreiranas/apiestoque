@@ -17,7 +17,5 @@ public class Categoria implements Serializable {
     @NotNull
     private String descricao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Produto produto;
 
 }
