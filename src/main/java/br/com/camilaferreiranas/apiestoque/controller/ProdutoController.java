@@ -79,8 +79,8 @@ public class ProdutoController {
                     content = @Content),
             @ApiResponse(responseCode = "400", description = "Não foi possível buscar os produtos",
                     content = @Content) })
-    @GetMapping("/categoria")
-    public ResponseEntity<Optional<List<Produto>>> findProdutoPorCategoria(@RequestBody Categoria categoria) {
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<Optional<List<Produto>>> findProdutoPorCategoria(@PathVariable Long categoria) {
         return ResponseEntity.ok(service.findProdutoByCategoria(categoria));
     }
 }

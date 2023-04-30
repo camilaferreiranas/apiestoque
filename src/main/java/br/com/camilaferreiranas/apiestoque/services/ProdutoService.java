@@ -34,7 +34,7 @@ public class ProdutoService {
         return produtoRepository.findProdutoByValorUnitario(valor);
     }
 
-    public Optional<List<Produto>> findProdutoByCategoria(Categoria idCategoria) {
+    public Optional<List<Produto>> findProdutoByCategoria(Long idCategoria) {
         return produtoRepository.findProdutoByCategoria(idCategoria);
     }
 }
