@@ -83,4 +83,25 @@ public class ProdutoController {
     public ResponseEntity<Optional<List<Produto>>> findProdutoPorCategoria(@PathVariable Long categoria) {
         return ResponseEntity.ok(service.findProdutoByCategoria(categoria));
     }
+
+    @Operation(summary = "Endpoint para excluir um produto de uma determinada categoria" )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Produto excluido com sucesso",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Produto.class)) }),
+            @ApiResponse(responseCode = "500", description = "Houve um erro ao excluir o produto",
+                    content = @Content),
+            @ApiResponse(responseCode = "400", description = "Não foi possível excluir o produto",
+                    content = @Content) })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletarProduto(@PathVariable Long id) {
+        service.deletarProduto(id);
+        return ResponseEntity.ok().body("Exclusão realizada com sucesso");
+    }
+
+    @PutMapping("/{id}/desconto/{desconto}/")
+    public ResponseEntity<String> aplicarDescontoProduto(@PathVariable Long id, @PathVariable double desconto) {
+        service.aplicarPromocaoProduto(desconto, id);
+        return ResponseEntity.ok().body("O desconto foi feito");
+    }
 }

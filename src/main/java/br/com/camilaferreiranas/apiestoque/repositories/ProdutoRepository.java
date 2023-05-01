@@ -17,5 +17,5 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
     @Modifying
     @Query("update Produto p set p.valorUnitario = :novoValor where p.id = :idProduto")
-    Produto criarPromocaoParaProduto(double novoValor, Long idProduto);
+    void criarPromocaoParaProduto(double novoValor, Long idProduto);
 }

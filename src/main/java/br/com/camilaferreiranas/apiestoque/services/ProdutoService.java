@@ -41,7 +41,18 @@ public class ProdutoService {
 
     @Transactional
     //implementar executeUpdate()
-    public Produto aplicarPromocaoProduto(double desconto) {
-        return null;
+    public void aplicarPromocaoProduto(double desconto, Long id) {
+        double novoValor = 0.0;
+        double valorVelho = 0.0;
+        Optional<Produto> produto = produtoRepository.findById(id);
+        valorVelho = produto.map(Produto::getValorUnitario).get();
+        novoValor = valorVelho - (valorVelho* desconto/100);
+        produtoRepository.criarPromocaoParaProduto(novoValor, id);
+    }
+
+    public void deletarProduto(Long id) {
+        if(!produtoRepository.findById(id).isEmpty()) {
+            produtoRepository.deleteById(id);
+        }
     }
 }
