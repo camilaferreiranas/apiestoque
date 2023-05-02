@@ -1,5 +1,6 @@
 package br.com.camilaferreiranas.apiestoque.controller;
 
+import br.com.camilaferreiranas.apiestoque.dto.ProdutoAtualizarDto;
 import br.com.camilaferreiranas.apiestoque.dto.ProdutoDto;
 import br.com.camilaferreiranas.apiestoque.model.Categoria;
 import br.com.camilaferreiranas.apiestoque.model.Produto;
@@ -103,5 +104,11 @@ public class ProdutoController {
     public ResponseEntity<String> aplicarDescontoProduto(@PathVariable Long id, @PathVariable double desconto) {
         service.aplicarPromocaoProduto(desconto, id);
         return ResponseEntity.ok().body("O desconto foi feito");
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<String> atualizarDadosProduto(@RequestBody ProdutoAtualizarDto dto, @PathVariable Long id) {
+        service.atualizarProduto(dto, id);
+        return ResponseEntity.ok().body("Atualização realizada com sucesso");
     }
 }

@@ -1,5 +1,6 @@
 package br.com.camilaferreiranas.apiestoque.services;
 
+import br.com.camilaferreiranas.apiestoque.dto.ProdutoAtualizarDto;
 import br.com.camilaferreiranas.apiestoque.dto.ProdutoDto;
 import br.com.camilaferreiranas.apiestoque.model.Categoria;
 import br.com.camilaferreiranas.apiestoque.model.Produto;
@@ -40,7 +41,6 @@ public class ProdutoService {
     }
 
     @Transactional
-    //implementar executeUpdate()
     public void aplicarPromocaoProduto(double desconto, Long id) {
         double novoValor = 0.0;
         double valorVelho = 0.0;
@@ -55,4 +55,12 @@ public class ProdutoService {
             produtoRepository.deleteById(id);
         }
     }
+
+    @Transactional
+    public void atualizarProduto(ProdutoAtualizarDto dto, Long id) {
+        if(!produtoRepository.findById(id).isEmpty()) {
+            produtoRepository.atualizarDadosProduto(dto, id);
+        }
+    }
+
 }
