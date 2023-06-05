@@ -99,9 +99,32 @@ public class ProdutoController {
         return ResponseEntity.ok().body("Exclusão realizada com sucesso");
     }
 
-    @PutMapping("/{id}/desconto/{desconto}/")
+    @Operation(summary = "Endpoint para implementar um desconto para um determinado produto" )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Desconto implementado com sucesso",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Produto.class)) }),
+            @ApiResponse(responseCode = "500", description = "Houve um erro ao implementar o desconto",
+                    content = @Content),
+            @ApiResponse(responseCode = "400", description = "Não foi possível implementar o desconto",
+                    content = @Content) })
+    @PutMapping("/{id}/desconto/{desconto}")
     public ResponseEntity<String> aplicarDescontoProduto(@PathVariable Long id, @PathVariable double desconto) {
         service.aplicarPromocaoProduto(desconto, id);
         return ResponseEntity.ok().body("O desconto foi feito");
+    }
+
+    @Operation(summary = "Endpoint para atualizar um determinado produto" )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Desconto implementado com sucesso",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Produto.class)) }),
+            @ApiResponse(responseCode = "500", description = "Houve um erro ao atualizar o produto",
+                    content = @Content),
+            @ApiResponse(responseCode = "400", description = "Não foi possível atualizar o produto",
+                    content = @Content) })
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Produto> atualizarProduto(@RequestBody ProdutoDto dto, @PathVariable Long id) {
+        return ResponseEntity.ok(service.updateProduto(dto, id));
     }
 }

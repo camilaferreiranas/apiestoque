@@ -40,7 +40,6 @@ public class ProdutoService {
     }
 
     @Transactional
-    //implementar executeUpdate()
     public void aplicarPromocaoProduto(double desconto, Long id) {
         double novoValor = 0.0;
         double valorVelho = 0.0;
@@ -54,5 +53,9 @@ public class ProdutoService {
         if(!produtoRepository.findById(id).isEmpty()) {
             produtoRepository.deleteById(id);
         }
+    }
+
+    public Produto updateProduto(ProdutoDto dto, Long id) {
+      return null;
     }
 }

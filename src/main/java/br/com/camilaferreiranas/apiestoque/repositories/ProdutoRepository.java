@@ -1,5 +1,6 @@
 package br.com.camilaferreiranas.apiestoque.repositories;
 
+import br.com.camilaferreiranas.apiestoque.dto.ProdutoDto;
 import br.com.camilaferreiranas.apiestoque.model.Categoria;
 import br.com.camilaferreiranas.apiestoque.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
