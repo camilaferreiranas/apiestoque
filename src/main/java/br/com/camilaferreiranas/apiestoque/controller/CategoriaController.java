@@ -24,7 +24,7 @@ public class CategoriaController {
 
     private CategoriaService service;
 
-    @Operation(summary = "Endpoint para cadastro de categoria")
+    @Operation(summary = "Endpoint para cadastro de categoria.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Categoria cadastrada",
                     content = { @Content(mediaType = "application/json",
